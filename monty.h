@@ -4,7 +4,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#incluce <unistd.h>
+#include <unistd.h>
+
+extern char *globe_val;
 
 /**
 * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,7 +51,7 @@ void nop(stack_t **stack, unsigned int line_number);
 
 
 /**
- * deal with line
+ * handle lines
  */
 void run_op(char *op, stack_t **stack, unsigned int n);
 /**

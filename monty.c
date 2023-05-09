@@ -1,14 +1,21 @@
 #include "monty.h"
+
+extern char *globe_val = NULL;
 /**
  * get_opcode - trim each line and get the string containing opcode
  * @str: input parameter
  * Return: pointer to opcode string
  */
-char *get_opcode(*char str)
+char *get_opcode(char *str)
 {
 	char *op;
-
+/*	extern char *globe_val;
+*/
 	op = strtok(str, " \t\n");
+	while (op != NULL)
+	{
+		globe_val = strtok(NULL, " \t\n");
+	}
 	return (op);
 }
 
@@ -38,6 +45,7 @@ void main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+	printf("file 00.m opened successfully\n");
 	line = NULL;
 	line_length = 0;
 	line_number = 0;
@@ -58,5 +66,5 @@ void main(int argc, char *argv[])
 	/**need to free stack
 	 */
 	fclose(file);
-	return (EXIT_SUCCESS);
+	return;
 }

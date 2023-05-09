@@ -1,18 +1,9 @@
 #include "monty.h"
-/** check_op - check if contains valid opcode
- * @str: input parameter to be checked
- * Return: valid opcode or NULL if not
- *
-char *check_op(char *str)
-{
-
-}
-*/
 
 /** run_op - execute matching operation
  * @op: input parameter
  * @stack: stack to operate
- * @line_number: input parameter
+ * @n: input parameter of line_number
  * Return: void
  */
 void run_op(char *op, stack_t **stack, unsigned int n)
@@ -21,6 +12,7 @@ void run_op(char *op, stack_t **stack, unsigned int n)
 	instruction_t opfunc[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
