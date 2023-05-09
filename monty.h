@@ -51,7 +51,7 @@ void nop(stack_t **stack, unsigned int line_number);
 /**
  * deal with line
  */
-
+void run_op(char *op, stack_t **stack, unsigned int n);
 /**
  * free_stack
  */
