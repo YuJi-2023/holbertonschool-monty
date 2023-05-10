@@ -19,12 +19,6 @@ void run_op(char *op, stack_t **stack, unsigned int n)
 		{NULL, NULL}
 	};
 
-	if (op == NULL)
-	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", n, op);
-		return;
-	}
-
 	i = 0;
 	while (opfunc[i].opcode != NULL)
 	{

@@ -12,14 +12,23 @@ void push(stack_t **stack, unsigned int line_number)
 	int value;
 	stack_t *tmp;
 
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	token_val = strtok(NULL, " \t");
+	if (token_val == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	value = atoi(token_val);
 	tmp = malloc(sizeof(stack_t));
 	if (tmp == NULL)
 	{
 		free(tmp);
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		/**fprintf(stderr, "Error: malloc failed\n");*/
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	tmp->n = value;

@@ -33,7 +33,13 @@ int main(int argc, char *argv[])
 	line_read = getline(&line, &line_length, file);
 	while (line_read != -1)
 	{
-		op = strtok(line, " \t");
+		op = strtok(line, " \t\n");
+		if (op == NULL)
+		{
+			line_number = line_number + 1;
+			line_read = getline(&line, &line_length, file);
+			continue;
+		}
 		run_op(op, &stack, line_number);
 		line_read = getline(&line, &line_length, file);
 		line_number = line_number + 1;
