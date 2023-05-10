@@ -14,6 +14,8 @@ void run_op(char *op, stack_t **stack, unsigned int n)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
+		{"add", add},
 		{NULL, NULL}
 	};
 
