@@ -2,8 +2,8 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
 RM = rm -rf
 BETTY = betty
-SRC = 	monty.c pall.c pint.c handle_op.c push.c pop.c swap.c\
-	add.c nop.c free_stack.c
+SRC = 	monty.c pall.c pint.c handle_op.c push.c pop.c\
+	add.c free_stack.c
 TARGET = monty
 
 
