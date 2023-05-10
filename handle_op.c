@@ -35,6 +35,6 @@ void run_op(char *op, stack_t **stack, unsigned int n)
 		}
 		i = i + 1;
 	}
-	fprintf(stderr, "L%u:unknown instruction %s\n", n, op);
+	fprintf(stderr, "L%u: unknown instruction %s\n", n, op);
 	exit(EXIT_FAILURE);
 }
