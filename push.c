@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * push - pushes an element to the the top of stack
  * @stack: the stack
@@ -9,14 +8,12 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
+	char *token_val;
 	int value;
-	extern char *globe_val;
 	stack_t *tmp;
 
-	if (globe_val != NULL)
-	{
-		value = atoi(globe_val);
-	}
+	token_val = strtok(NULL, " \t");
+	value = atoi(token_val);
 	tmp = malloc(sizeof(stack_t));
 	if (tmp == NULL)
 	{
@@ -26,7 +23,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	tmp->n = value;
 	tmp->prev = NULL;
-	tmp->next = *stack;	
+	tmp->next = *stack;
 	if (*stack != NULL)
 	{
 		(*stack)->prev = tmp;

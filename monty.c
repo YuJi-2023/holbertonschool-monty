@@ -1,31 +1,41 @@
 #include "monty.h"
 
-extern char *globe_val = NULL;
+/**char *globe_val = NULL;
+  */
 /**
  * get_opcode - trim each line and get the string containing opcode
  * @str: input parameter
  * Return: pointer to opcode string
- */
+ 
 char *get_opcode(char *str)
 {
 	char *op;
-/*	extern char *globe_val;
-*/
+	ssize_t line_read;
+	char *line = NULL;
+	FILE *file;
+	size_t line_length = 0;
+	extern char *g_val;
+
 	op = strtok(str, " \t\n");
-	while (op != NULL)
+	if (op != NULL)
 	{
-		globe_val = strtok(NULL, " \t\n");
+		str = str + 1;
+		g_val = strtok(NULL, " \t\n");
+
+		line_read = getline(&line, &line_length, file);
+		continue;
 	}
 	return (op);
 }
+*/
 
 /**
  * main - Entry point
  * @argc: count of input command
  * @argv: pointer to command string
- * Return: void
+ * Return: int
  */
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	FILE *file;
 	char *line, *op;
@@ -33,6 +43,8 @@ void main(int argc, char *argv[])
 	ssize_t line_read;
 	unsigned int line_number;
 	stack_t *stack;
+/*	g_val = NULL;
+ */
 
 	if (argc != 2)
 	{
@@ -45,26 +57,20 @@ void main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	printf("file 00.m opened successfully\n");
 	line = NULL;
 	line_length = 0;
-	line_number = 0;
+	line_number = 1;
 	stack = NULL;
 	line_read = getline(&line, &line_length, file);
 	while (line_read != -1)
 	{
-		line_number = line_number + 1;
-		op = get_opcode(line);
-		if (op != NULL)
-		{
-			run_op(op, &stack, line_number);
-		}
-		line_number = line_number + 1;
+		op = strtok(line, " \t");
+		run_op(op, &stack, line_number);
 		line_read = getline(&line, &line_length, file);
+		line_number = line_number + 1;
 	}
 	free(line);
-	/**need to free stack
-	 */
+	free_stack(stack);
 	fclose(file);
-	return;
+	return(EXIT_SUCCESS);
 }

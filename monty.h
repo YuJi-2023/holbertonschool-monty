@@ -6,7 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
-extern char *globe_val;
+/*extern char *g_val;
 
 /**
 * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -57,6 +57,6 @@ void run_op(char *op, stack_t **stack, unsigned int n);
 /**
  * free_stack
  */
-
+void free_stack(stack_t *head);
 
 #endif
