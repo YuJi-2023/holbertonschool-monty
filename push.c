@@ -1,5 +1,30 @@
 #include "monty.h"
 /**
+  * _is_valid_intstr - check is a string is valid to convert to an int
+  * @str: string to be checked
+  * Return: pointer to a valid str or NULL if not
+  */
+char *_is_valid_intstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '+' || str[i] == '-')
+		{
+			i = i + 1;
+		}
+		if (isdigit(str[i]) == 0)
+		{
+			return (NULL);
+		}
+		i = i + 1;
+	}
+	return (str);
+}
+
+/**
  * push - pushes an element to the the top of stack
  * @stack: the stack
  * @line_number: the current line number
@@ -19,6 +44,11 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	token_val = strtok(NULL, " \t\n");
 	if (token_val == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (_is_valid_intstr(token_val) == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
