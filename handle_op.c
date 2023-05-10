@@ -1,6 +1,7 @@
 #include "monty.h"
 
-/** run_op - execute matching operation
+/**
+ * run_op - execute matching operation
  * @op: input parameter
  * @stack: stack to operate
  * @n: input parameter of line_number
