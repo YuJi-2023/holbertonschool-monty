@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 RM = rm -rf
 BETTY = betty
 SRC = monty.c pall.c pint.c handle_op.c push.c pop.c\
-	add.c free_stack.c
+	add.c free_stack.c swap.c nop.c
 TARGET = monty
 
 
